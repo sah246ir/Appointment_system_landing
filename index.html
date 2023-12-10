@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    body{
+        background-color: wheat;
+    }
+    .container {
+        background-color: wheat;
+        padding: 25px;
+
+    }
+
+    .input-area {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+
+
+    }
+
+    .cards-box {
+        display: flex;
+        gap: 15px;
+    }
+
+    .card>i{
+        padding: 10px;
+        font-size: 4.5ch;
+    }
+    .card{
+        cursor: pointer;
+        transition: 500ms ease;
+    }
+    .c-type{
+        font-weight: 900;
+    }
+
+    .cards-box>.card:hover{
+        background-color: rgb(231, 231, 231);
+         
+    }
+
+    .cards-box>.card {
+        background-color: white;
+        display: grid;
+        place-items: center;
+        width: 80px;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: .25px .25px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .card>p {
+        margin-top: 10px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .slot {
+        margin-inline: auto;
+        flex: 0 0 85%;
+        /* margin-right: 20px; Adjust margin as needed */
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+
+    }
+
+
+    @media (max-width: 768px) {
+        .slot {
+            flex: 0 0 100% ;
+            margin-right: 10px;
+        }
+    }
+
+    .slot-box {
+        overflow-x: auto;
+        /* or overflow-x: scroll; if you want a scrollbar */
+        overflow-y: hidden;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+
+    .slot>.slot-time-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: 10px;
+
+        width: 100%;
+
+    }
+    .slot-date-carousel{
+        display: flex;
+    }
+    /* .slot-date {
+        text-align: center;
+        font-size: 2.5ch;
+        background-color: rgb(255, 255, 255);
+        padding: 010px;
+        border-bottom: 1px solid gray;
+        margin-bottom: 20px;
+        letter-spacing: 3px;
+    } */
+
+    .slot-time {
+        position: relative;
+        border: 1px solid black;
+        padding: 10px 20px;
+        flex-grow: 1;
+        cursor: pointer;
+        z-index: 999;
+        transition: 400ms ease-in-out; 
+    }
+
+    .slot-time-wrapper {
+        position: relative;
+        flex-grow: 1;
+        width: 25%;
+        text-align: center;
+        font-size: 2.5ch;
+    }
+
+    .slot-time-wrapper::after {
+        content: '';
+        width: 0%;
+        background-color: green;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: 500ms ease-in-out;
+    }
+
+    .slot-time-wrapper:hover::after {
+        width: 100%;
+    }
+
+    .slot-time-wrapper:hover {
+        color: wheat;
+    }
+
+    .slot-area {
+        flex-direction: column;
+    }
+
+    .d-none {
+        display: none;
+    }
+    .card[aria-selected]{
+        background-color: green;
+        pointer-events: none;
+        color: wheat;
+        transform: scale(1.1);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1 tabindex="0">Book Appointment </h1>
+            <h2 tabindex="0" style="margin-bottom: 8px;">Dr. Manik Dalvi's</h2>
+            <p style="font-size: 2.3ch;" tabindex="0">
+            Kalyan Naka, Rk Business Centre, Opp. Bopal Nagar<br>
+            Maharashtra<br>
+            421302
+        </div>
+
+
+        <div class="form-area" tabindex="0" aria-details="form-area">
+            <div class="input-area" tabindex="0">
+                <div class="label">
+                    <h3 tabindex="0">Consultation Mode</h3>
+                </div>
+                <div class="input-box cards-box">
+                    <div aria-selected="true" class="card">
+                        <i aria-selected="true" class="fa fa-user-md"></i>
+                        <p aria-selected="true" tabindex="0"><span class="c-type">In-Person</span></p>
+                    </div>
+                    <div class="card">
+                        <i class="fa fa-phone"></i>
+                        <p tabindex="0"><span class="c-type">Audio</span></p>
+                    </div>
+                    <div class="card">
+                        <i class="fa fa-video-camera"></i>
+                        <p tabindex="0"><span class="c-type">Video</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area slot-area" tabindex="0">
+                <div class="label">
+                    <h3 tabindex="0">Select Time Slot</h3>
+                </div>
+                <div class="input-box slot-box ">
+                    <div class="slot ">
+                        <div aria-details="all-slot-dates" class="slot-date-carousel">
+                            <p class="slot-date">25 December</p>
+                            <p class="slot-date">25 December</p>
+                            <p class="slot-date">25 December</p>
+                            <p class="slot-date">25 December</p>
+                        </div>
+
+
+
+                        <div class="slot-time-box">
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                            <div class="slot-time-wrapper">
+                                <p tabindex="0" aria-details="slot-time" class="slot-time">11:00 AM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="label">
+                    <h3>Payment Mode</h3>
+                </div>
+                <div class="input-box cards-box">
+                    <div class="card">
+                        <img tabindex="0" width="100%" src="cash.png" alt="cash icon">
+                        <p tabindex="0"><span class="c-type">Cash</span></p>
+                    </div>
+                    <div class="card">
+                        <img tabindex="0" width="100%" src="upi.png" alt="upi call icon">
+                        <p tabindex="0"><span class="c-type">UPI</span></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var slot_list = document.querySelector(".slot-box");
+    var slot_init = document.querySelector(".slot");
+    var today = new Date();
+    const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
+        "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+    ]; 
+    // for (let i = 0; i <= 0; i++) {
+    //     var new_date = new Date();
+    //     new_date.setDate(today.getDate() + i);
+    //     var slot = slot_init.cloneNode(true);
+    //     slot.querySelector(".slot-date").innerHTML = monthNames[new_date.getMonth()] + " " + new_date.getDate()
+    //     slot_list.appendChild(slot)
+    //     slot.classList.remove("d-none"); 
+    // }
+    document.querySelector(".slot-box").classList.remove("d-none");
+</script>
+
+</html>
