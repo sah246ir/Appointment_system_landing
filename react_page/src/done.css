@@ -1,0 +1,143 @@
+* {
+    padding: 0;
+    margin: 0
+}
+ 
+
+
+.newwrap{ 
+    z-index: 100;
+    backdrop-filter: brightness(10%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.done-wrapper { 
+    padding: 5em;
+    z-index: 999 ;
+    backdrop-filter: brightness(10%);
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 60%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+     scale: 1;
+    background-color: #c07070;
+    animation: scalein 0.3s forwards;
+
+    transition: 444ms;;
+}
+
+@keyframes scalein {
+    from{
+        scale: 0;
+    }to{
+        scale: 1;
+    }
+}
+ 
+.close-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 7ch;
+     
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+    width: 156px;
+    height: 156px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: none
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1)
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 130px #7ac142
+    }
+}
+
+.done-actions{
+    text-align: center;
+    
+}
+.done-actions>h2:nth-child(1){
+    margin-bottom: 15px;
+    
+}
+.done-actions>h2{
+    color: #bd4c4c;
+    background-color: #d18e8e;
+    padding: 10px;
+    transition: 444ms;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.done-actions>h2:hover{
+    color: #f8d5d5;
+    background-color: #d17f7f;
+    
+}
+
+.done-close-action{
+    color: wheat;
+    font-size: 4.5ch;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.done-close-action:hover{ 
+    color: rgb(255, 255, 255);
+}
